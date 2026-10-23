@@ -1,0 +1,356 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        40,
+        120
+      ],
+      "size": [
+        430,
+        750
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "example.mp4",
+        "force_rate": 14,
+        "custom_width": 0,
+        "custom_height": 448,
+        "frame_load_cap": 0,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "format": "None",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "force_rate": 14,
+            "custom_width": 0,
+            "custom_height": 448,
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "select_every_nth": 1,
+            "filename": "example.mp4",
+            "type": "input",
+            "format": "video/mp4"
+          }
+        }
+      },
+      "title": "视频输入 | 14 fps"
+    },
+    {
+      "id": 2,
+      "type": "ShieldGemma2PolicySignals",
+      "pos": [
+        550,
+        120
+      ],
+      "size": [
+        430,
+        550
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          }
+        },
+        {
+          "name": "max_frames",
+          "type": "INT",
+          "widget": {
+            "name": "max_frames"
+          }
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        },
+        {
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "name": "policy_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "policy_mode"
+          }
+        },
+        {
+          "name": "custom_policy",
+          "type": "STRING",
+          "widget": {
+            "name": "custom_policy"
+          }
+        },
+        {
+          "name": "review_threshold",
+          "type": "FLOAT",
+          "widget": {
+            "name": "review_threshold"
+          }
+        },
+        {
+          "name": "top_k",
+          "type": "INT",
+          "widget": {
+            "name": "top_k"
+          }
+        },
+        {
+          "name": "model_path",
+          "type": "STRING",
+          "widget": {
+            "name": "model_path"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "signals_json",
+          "type": "STRING",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "readable_report",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "max_yes_probability",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "policy_text",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShieldGemma2PolicySignals"
+      },
+      "widgets_values": [
+        14,
+        48,
+        1,
+        "auto",
+        "official_sexual",
+        "",
+        0.5,
+        8,
+        ""
+      ],
+      "title": "ShieldGemma 2 | 官方 sexual 政策"
+    },
+    {
+      "id": 3,
+      "type": "SaveText",
+      "pos": [
+        1330,
+        120
+      ],
+      "size": [
+        380,
+        170
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 2
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveText"
+      },
+      "widgets_values": [
+        "",
+        "video_review/shieldgemma2_report",
+        "txt"
+      ],
+      "title": "保存 ShieldGemma 2 中文报告"
+    },
+    {
+      "id": 4,
+      "type": "SaveText",
+      "pos": [
+        1330,
+        340
+      ],
+      "size": [
+        380,
+        170
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveText"
+      },
+      "widgets_values": [
+        "",
+        "video_review/shieldgemma2_signals",
+        "txt"
+      ],
+      "title": "保存 ShieldGemma 2 原始 JSON"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      1,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.75,
+      "offset": [
+        80,
+        60
+      ]
+    }
+  },
+  "version": 0.4
+}

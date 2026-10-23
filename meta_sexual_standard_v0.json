@@ -1,0 +1,83 @@
+{
+  "version": "meta-sexual-evidence-v0.1",
+  "updated_at": "2026-10-19",
+  "scope": "仅评估广告视频抽样画面的成人性内容线索；不是 Meta 官方评级或过审预测。",
+  "policy_references": [
+    {
+      "id": "META-AD-ADULT",
+      "name": "Meta Advertising Standards: Adult Nudity and Sexual Activity",
+      "url": "https://transparency.meta.com/policies/ad-standards/objectionable-content/adult-nudity-and-sexual-activity/",
+      "role": "官方政策依据；广告还可能受其他政策影响"
+    },
+    {
+      "id": "META-REVIEW-SCOPE",
+      "name": "Meta Blueprint: Understanding Meta Advertising Standards",
+      "url": "https://www.facebookblueprint.com/student/path/253076-meta-advertising-standards-course",
+      "role": "审核范围参考；视频以外的广告组成部分不在本工作流内"
+    }
+  ],
+  "rating_scale": [
+    {"id": "PG", "meaning": "未观察到明确性化呈现；普通着装和日常互动不能单独升级。"},
+    {"id": "PG13", "meaning": "可见明确性感或性暗示呈现，但没有可确认的裸体或性行为；广告政策风险需人工核对。"},
+    {"id": "R", "meaning": "可确认的裸露乳房、臀部或生殖器，没有可确认的性行为。"},
+    {"id": "X", "meaning": "可确认的性行为、模拟性行为或无歧义的性化身体接触。"},
+    {"id": "XXX", "meaning": "可确认且细节化呈现的性行为。"},
+    {"id": "UNCERTAIN", "meaning": "抽样、遮挡或画质使基础内容也无法可靠分类。"}
+  ],
+  "rules": [
+    {
+      "id": "VIS-01",
+      "rating": "PG13",
+      "signal": "明确性感或性暗示的呈现",
+      "positive": ["镜头持续强调胸部、臀部等部位", "明确的挑逗姿势或性化动作", "内衣展示或明显暴露服装与性化镜头同时出现"],
+      "counterexamples": ["短裙、丝袜、女仆装或深 V 领本身", "普通站坐姿、腮红、靠近、递物或日常触碰", "只看见衣物下身体轮廓"],
+      "policy_reference": "META-AD-ADULT"
+    },
+    {
+      "id": "VIS-02",
+      "rating": "R",
+      "signal": "清楚可见的裸露乳房、臀部或生殖器",
+      "positive": ["抽样画面中相关部位清楚可见"],
+      "counterexamples": ["衣物下轮廓或乳沟", "裸露大腿", "半透明衣物但关键部位看不清"],
+      "policy_reference": "META-AD-ADULT"
+    },
+    {
+      "id": "VIS-03",
+      "rating": "X",
+      "signal": "明确性行为、模拟性行为或无歧义的性化身体接触",
+      "positive": ["动作及接触部位均清楚可见，且具有明确性含义"],
+      "counterexamples": ["递打火机、拉手或普通拥抱", "只看见手接近身体", "从前后镜头猜测画外行为"],
+      "policy_reference": "META-AD-ADULT"
+    },
+    {
+      "id": "VIS-04",
+      "rating": "XXX",
+      "signal": "明确且细节化的性行为呈现",
+      "positive": ["抽样画面直接显示细节化的性行为"],
+      "counterexamples": ["只有暧昧氛围或推测的后续行为"],
+      "policy_reference": "META-AD-ADULT"
+    },
+    {
+      "id": "VIS-05",
+      "rating": null,
+      "signal": "关键证据遮挡、模糊或未被抽到",
+      "positive": ["无法确认高一级所需的部位或动作", "抽样帧不足以覆盖可疑片段"],
+      "counterexamples": ["不能把看不清直接当作已发生"],
+      "policy_reference": "META-AD-ADULT"
+    },
+    {
+      "id": "VIS-06",
+      "rating": null,
+      "signal": "普通服装、互动或场景的反证",
+      "positive": ["相关身体部位由不透明衣物覆盖", "普通换装、交谈、递物等动作清楚可见"],
+      "counterexamples": ["反证只针对被检查的抽样帧，不能证明整段视频没有风险"],
+      "policy_reference": "META-AD-ADULT"
+    }
+  ],
+  "source_quality": {
+    "official_policy": "官方规则，不等于单条广告审核结果",
+    "observed_meta_outcome": "保存原始通知与广告 ID 后，才是本广告的实际结果",
+    "third_party_case": "用于构建边界例，不作为 Meta 审核真值",
+    "model_output": "待人工核对的线索，不作为事实证据"
+  }
+}

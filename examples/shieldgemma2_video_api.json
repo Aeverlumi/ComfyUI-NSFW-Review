@@ -1,0 +1,67 @@
+{
+  "1": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "example.mp4",
+      "force_rate": 14,
+      "custom_width": 0,
+      "custom_height": 448,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    },
+    "_meta": {
+      "title": "视频输入 | 14 fps"
+    }
+  },
+  "2": {
+    "class_type": "ShieldGemma2PolicySignals",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "fps": 14,
+      "max_frames": 48,
+      "batch_size": 1,
+      "device": "auto",
+      "policy_mode": "official_sexual",
+      "custom_policy": "",
+      "review_threshold": 0.5,
+      "top_k": 8,
+      "model_path": ""
+    },
+    "_meta": {
+      "title": "ShieldGemma 2 | 官方 sexual 政策"
+    }
+  },
+  "3": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "2",
+        1
+      ],
+      "filename_prefix": "video_review/shieldgemma2_report",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 ShieldGemma 2 中文报告"
+    }
+  },
+  "4": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "2",
+        0
+      ],
+      "filename_prefix": "video_review/shieldgemma2_signals",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 ShieldGemma 2 原始 JSON"
+    }
+  }
+}

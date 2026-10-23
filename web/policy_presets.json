@@ -1,0 +1,41 @@
+{
+  "official_sexual": {
+    "label": "Google official: sexual",
+    "kind": "official",
+    "processor_key": "sexual",
+    "source": "https://huggingface.co/google/shieldgemma-2-4b-it",
+    "text": "No Sexually Explicit content: The image shall not contain content that depicts explicit or graphic sexual acts (e.g., pornography, erotic nudity, depictions of rape or sexual assault)."
+  },
+  "official_dangerous": {
+    "label": "Google official: dangerous",
+    "kind": "official",
+    "processor_key": "dangerous",
+    "source": "https://huggingface.co/google/shieldgemma-2-4b-it",
+    "text": "No Dangerous Content: The image shall not contain content that facilitates or encourages activities that could cause real-world harm (e.g., building firearms and explosive devices, promotion of terrorism, instructions for suicide)."
+  },
+  "official_violence": {
+    "label": "Google official: violence/gore",
+    "kind": "official",
+    "processor_key": "violence",
+    "source": "https://huggingface.co/google/shieldgemma-2-4b-it",
+    "text": "No Violence/Gore content: The image shall not contain content that depicts shocking, sensational, or gratuitous violence (e.g., excessive blood and gore, gratuitous violence against animals, extreme injury or moment of death)."
+  },
+  "facebook_ads_visual": {
+    "label": "Meta ad visual review (project draft)",
+    "kind": "project_draft",
+    "source": "https://transparency.meta.com/policies/ad-standards/objectionable-content/adult-nudity-and-sexual-activity/",
+    "text": "No sexualized advertising imagery: The image shall not show explicit nudity or sexual activity, clearly sexualized posing or contact, or framing that deliberately emphasizes breasts, buttocks, or groin for sexual effect. Underwear or revealing clothing counts only when paired with clearly sexualized presentation. Ordinary fashion, short skirts, stockings, cleavage, dancing, affection, and routine physical contact alone are not violations. Judge only visible evidence in this image; do not infer sexual intent from clothing alone."
+  },
+  "detailed_sexual_visual": {
+    "label": "Detailed sexual visual rule (project draft)",
+    "kind": "project_draft",
+    "source": "ComfyUI-NSFW-Review/meta_sexual_standard_v0.json (internal project standard, not Meta ratings)",
+    "text": "No clearly sexualized visual content. The image shall not show any of the following visible evidence: a deliberately provocative pose or gesture; framing that emphasizes breasts, buttocks, or groin for sexual effect; underwear or revealing clothing combined with sexualized posing or framing; clearly exposed breasts, buttocks, or genitals; a clearly visible sexual act, simulated sexual act, or unambiguous sexualized physical contact; or a sexual act shown in graphic detail. Ordinary fashion, dancing, conversation, changing clothes without visible nudity or sexualized presentation, and routine physical contact are not violations. Short skirts, stockings, maid outfits, low necklines, cleavage, blushing, sitting, visible legs, and body contours under opaque clothing are not violations by themselves. Do not infer nudity through clothing, sexual contact from a hand merely near a body, or actions outside this image. If a body part or action is obscured or ambiguous, judge only other clearly visible evidence; do not assume the hidden content is sexual."
+  },
+  "azure_aws_visual": {
+    "label": "Azure/AWS visual taxonomy (project draft)",
+    "kind": "taxonomy_inspired_draft",
+    "source": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/harm-categories ; https://docs.aws.amazon.com/rekognition/latest/dg/moderation-api.html",
+    "text": "No clearly sexual or suggestive visual content: The image shall not depict sexual activity, visible intimate-part nudity, implied nudity with intimate parts deliberately concealed, or a clearly sexualized pose, contact, or close-up. Swimwear, underwear, partial skin exposure, fashion modeling, kissing, or an attractive appearance alone are not violations without a clearly sexualized presentation. Assess only what is visible in this image; do not infer nudity under opaque clothing or actions outside the frame."
+  }
+}

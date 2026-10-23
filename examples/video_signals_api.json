@@ -1,0 +1,47 @@
+{
+  "1": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "example.mp4",
+      "force_rate": 14,
+      "custom_width": 0,
+      "custom_height": 448,
+      "frame_load_cap": 8,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "2": {
+    "class_type": "OpenNSFW2ImageSignals",
+    "inputs": {"images": ["1", 0], "fps": 14, "max_frames": 8, "batch_size": 4, "device": "cpu", "top_k": 4}
+  },
+  "3": {
+    "class_type": "FalconsaiImageSignals",
+    "inputs": {"images": ["1", 0], "fps": 14, "max_frames": 8, "batch_size": 4, "device": "auto", "top_k": 4}
+  },
+  "4": {
+    "class_type": "BlueEyeImageSignals",
+    "inputs": {"images": ["1", 0], "fps": 14, "max_frames": 8, "batch_size": 2, "device": "auto", "top_k": 4}
+  },
+  "5": {
+    "class_type": "CompareImageSignals",
+    "inputs": {"opennsfw2_json": ["2", 0], "falconsai_json": ["3", 0], "blue_eye_json": ["4", 0]}
+  },
+  "6": {
+    "class_type": "SaveText",
+    "inputs": {"text": ["2", 0], "filename_prefix": "video_review/opennsfw2_signals", "format": "txt"}
+  },
+  "7": {
+    "class_type": "SaveText",
+    "inputs": {"text": ["3", 0], "filename_prefix": "video_review/falconsai_signals", "format": "txt"}
+  },
+  "8": {
+    "class_type": "SaveText",
+    "inputs": {"text": ["4", 0], "filename_prefix": "video_review/blue_eye_signals", "format": "txt"}
+  },
+  "9": {
+    "class_type": "SaveText",
+    "inputs": {"text": ["5", 0], "filename_prefix": "video_review/model_comparison", "format": "txt"}
+  }
+}

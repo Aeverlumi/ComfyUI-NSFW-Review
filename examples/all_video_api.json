@@ -1,0 +1,249 @@
+{
+  "1": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "example.mp4",
+      "force_rate": 14,
+      "custom_width": 0,
+      "custom_height": 448,
+      "frame_load_cap": 8,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    },
+    "_meta": {
+      "title": "视频输入 | 14 fps"
+    }
+  },
+  "2": {
+    "class_type": "OpenNSFW2ImageSignals",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "fps": 14,
+      "max_frames": 8,
+      "batch_size": 4,
+      "device": "cpu",
+      "top_k": 4
+    },
+    "_meta": {
+      "title": "OpenNSFW2 | 逐帧信号"
+    }
+  },
+  "3": {
+    "class_type": "FormatImageSignalsReport",
+    "inputs": {
+      "signals_json": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "整理中文检测报告"
+    }
+  },
+  "4": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "3",
+        0
+      ],
+      "filename_prefix": "video_review/opennsfw2_combined_report",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 opennsfw2 中文报告"
+    }
+  },
+  "5": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "2",
+        0
+      ],
+      "filename_prefix": "video_review/opennsfw2_combined_signals",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 opennsfw2 原始 JSON"
+    }
+  },
+  "6": {
+    "class_type": "FalconsaiImageSignals",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "fps": 14,
+      "max_frames": 8,
+      "batch_size": 4,
+      "device": "auto",
+      "top_k": 4
+    },
+    "_meta": {
+      "title": "Falconsai | 逐帧信号"
+    }
+  },
+  "7": {
+    "class_type": "FormatImageSignalsReport",
+    "inputs": {
+      "signals_json": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "整理中文检测报告"
+    }
+  },
+  "8": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "7",
+        0
+      ],
+      "filename_prefix": "video_review/falconsai_combined_report",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 falconsai 中文报告"
+    }
+  },
+  "9": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "6",
+        0
+      ],
+      "filename_prefix": "video_review/falconsai_combined_signals",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 falconsai 原始 JSON"
+    }
+  },
+  "10": {
+    "class_type": "BlueEyeImageSignals",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "fps": 14,
+      "max_frames": 8,
+      "batch_size": 2,
+      "device": "auto",
+      "top_k": 4
+    },
+    "_meta": {
+      "title": "Blue-Eye | 逐帧信号"
+    }
+  },
+  "11": {
+    "class_type": "FormatImageSignalsReport",
+    "inputs": {
+      "signals_json": [
+        "10",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "整理中文检测报告"
+    }
+  },
+  "12": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "11",
+        0
+      ],
+      "filename_prefix": "video_review/blue_eye_combined_report",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 blue_eye 中文报告"
+    }
+  },
+  "13": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "10",
+        0
+      ],
+      "filename_prefix": "video_review/blue_eye_combined_signals",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 blue_eye 原始 JSON"
+    }
+  },
+  "14": {
+    "class_type": "CompareImageSignals",
+    "inputs": {
+      "opennsfw2_json": [
+        "2",
+        0
+      ],
+      "falconsai_json": [
+        "6",
+        0
+      ],
+      "blue_eye_json": [
+        "10",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "三模型帧信号对照"
+    }
+  },
+  "15": {
+    "class_type": "FormatImageSignalsReport",
+    "inputs": {
+      "signals_json": [
+        "14",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "整理中文检测报告"
+    }
+  },
+  "16": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "15",
+        0
+      ],
+      "filename_prefix": "video_review/model_comparison_report",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 三模型对照中文报告"
+    }
+  },
+  "17": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "14",
+        0
+      ],
+      "filename_prefix": "video_review/model_comparison",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 三模型对照原始 JSON"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "1": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "example.mp4",
+      "force_rate": 14,
+      "custom_width": 0,
+      "custom_height": 448,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    },
+    "_meta": {
+      "title": "视频输入 | 14 fps"
+    }
+  },
+  "2": {
+    "class_type": "BlueEyeImageSignals",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "fps": 14,
+      "max_frames": 48,
+      "batch_size": 2,
+      "device": "auto",
+      "top_k": 8
+    },
+    "_meta": {
+      "title": "Blue-Eye | 逐帧信号"
+    }
+  },
+  "3": {
+    "class_type": "FormatImageSignalsReport",
+    "inputs": {
+      "signals_json": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "整理中文检测报告"
+    }
+  },
+  "4": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "3",
+        0
+      ],
+      "filename_prefix": "video_review/blue_eye_individual_report",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 blue_eye 中文报告"
+    }
+  },
+  "5": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "2",
+        0
+      ],
+      "filename_prefix": "video_review/blue_eye_individual_signals",
+      "format": "txt"
+    },
+    "_meta": {
+      "title": "保存 blue_eye 原始 JSON"
+    }
+  }
+}
